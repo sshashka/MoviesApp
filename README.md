@@ -1,5 +1,5 @@
 # MoviesApp
-# fictadvisor-iOS
+This is my pet project just to maintain and show my skills
 
 ## design
 
