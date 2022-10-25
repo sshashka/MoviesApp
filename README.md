@@ -20,4 +20,4 @@ https://developers.themoviedb.org/3/getting-started/introduction
 - Autorization (via api provided tools, or hopefuly FireBase)
 - Animations, because who does not like them(espectially when you hide poor api responce time with them)
 - UI improvenets
-- Code improvements. Because I believe in perfection, and it's a vary long journey to acheive it
+- Code improvements. Because I believe in perfection, and it's a very long journey to acheive it
