@@ -10,7 +10,7 @@ The movie database API v3:
 
 https://developers.themoviedb.org/3/getting-started/introduction
 
-## techical stack 
+## Tech stack 
 - iOS 16 target 
 - UIKit + SDWebImage + CoreData + Lottie (in future) All UI in code
 - MVP architecture, because MVC is kinda sus
