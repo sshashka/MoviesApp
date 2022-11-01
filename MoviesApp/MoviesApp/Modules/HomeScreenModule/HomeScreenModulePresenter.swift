@@ -18,8 +18,6 @@ protocol HomeScreenModulePresenterProtocol: AnyObject {
 }
 
 class HomeScreenModulePresenter: HomeScreenModulePresenterProtocol {
-    
-    
     var movieType: HomePageMovieType
     private var page: Int = 1
     let service: HomeScreenServiceProtocol!

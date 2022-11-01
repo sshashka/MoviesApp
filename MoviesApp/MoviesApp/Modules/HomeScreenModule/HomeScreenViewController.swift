@@ -7,17 +7,20 @@
 
 import UIKit
 import SDWebImage
+import Lottie
 
 final class HomeScreenViewController: UIViewController {
-    var results = HomePageResults()
-    var movieType: HomePageMovieType = .topRated
-    var page = 1
-    var presenter: HomeScreenModulePresenterProtocol?
+    private var results = HomePageResults()
+    private var movieType: HomePageMovieType = .topRated
+    private var page = 1
+    private var presenter: HomeScreenModulePresenterProtocol?
+    private var animationView: LottieAnimationView!
     
     private var collectionView: UICollectionView! = nil
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        animationView = CommonUICollorsAndViews.getLottieBackground()
+        view.addSubview(animationView)
         self.title = "Home"
         setupCollectionView()
         view.addSubview(collectionView)
@@ -27,8 +30,14 @@ final class HomeScreenViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+        animationView.play()
         presenter?.getData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        animationView.stop()
+        WebImageManager.shared.removeCache()
     }
 }
 
@@ -46,6 +55,7 @@ private extension HomeScreenViewController {
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layuot)
         collectionView?.translatesAutoresizingMaskIntoConstraints = false
         collectionView?.backgroundColor = .clear
+        collectionView?.backgroundView = nil
         collectionView?.delegate = self
         collectionView?.dataSource = self
         collectionView?.register(BasicMovieCollectionViewCell.self, forCellWithReuseIdentifier: BasicMovieCollectionViewCell.identifier)

@@ -7,9 +7,17 @@
 
 import UIKit
 
+
 class MovieVideosTableViewCell: UITableViewCell {
     static let identifier = "MovieVideosTableViewCell"
-    var collectionView: UICollectionView! = nil
+    var data: VideosData?
+    
+    var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.itemSize = .init(width: UIScreen.main.bounds.width - 40, height: 200)
+        return UICollectionView(frame: .zero, collectionViewLayout: layout)
+    }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -25,15 +33,11 @@ class MovieVideosTableViewCell: UITableViewCell {
 
 private extension MovieVideosTableViewCell {
     func setupCollectionView() {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: 240, height: 250)
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(MovieDetailsCollectionViewCell.self, forCellWithReuseIdentifier: MovieDetailsCollectionViewCell.identifier)
         collectionView.delegate = self
         collectionView.dataSource = self
-        addSubview(collectionView)
+        contentView.addSubview(collectionView)
     }
     
     func setupConstraints() {
@@ -41,21 +45,36 @@ private extension MovieVideosTableViewCell {
             collectionView.topAnchor.constraint(equalTo: contentView.topAnchor),
             collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor)
+            collectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
         ])
+    }
+    
+    func openVideo(link: String) {
+        if let url = URL(string: GlobalVariables.youtubeBaseURL.rawValue + link) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        }
     }
 }
 
-extension MovieVideosTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension MovieVideosTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        guard let data = data else { return 0 }
+        return data.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieDetailsCollectionViewCell.identifier, for: indexPath) as? MovieDetailsCollectionViewCell
         guard let cell = cell else { return UICollectionViewCell() }
+        if let data = data {
+            cell.setImage(link: data[indexPath.row].key)
+        }
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let data = data else { return }
+        openVideo(link: data[indexPath.row].key)
     }
 }
 

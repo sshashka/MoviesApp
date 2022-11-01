@@ -20,16 +20,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = TabBarController()
-        window?.backgroundColor = .systemIndigo
         window?.makeKeyAndVisible()
-        setupSDWebImage()
+        WebImageManager.shared.setupSDWebImage()
     }
     
-    func setupSDWebImage() {
-        //doing this prevents big memory usage when scrolling I managed to use up to 2G without this
-        SDImageCache.shared.config.maxDiskSize = 1024 * 1024
-        SDImageCache.shared.config.shouldCacheImagesInMemory = false
-    }
+    
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.

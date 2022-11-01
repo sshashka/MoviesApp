@@ -64,8 +64,8 @@ class BasicMovieCollectionViewCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
             stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 5),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -5)
         ])
     }
     override init(frame: CGRect) {
@@ -74,9 +74,8 @@ class BasicMovieCollectionViewCell: UICollectionViewCell {
         self.layer.cornerRadius = 10.0
         contentView.addSubview(stackView)
         setupConstraints()
-        let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .systemChromeMaterial))
         contentView.backgroundColor = .clear
-        backgroundView = blurView
+        backgroundView = CommonUICollorsAndViews.getbasicBlurEffect()
     }
     
     override func prepareForReuse() {

@@ -18,7 +18,6 @@ class RestService {
     let baseURL = "https://api.themoviedb.org/3"
     let basePicURL = "https://image.tmdb.org/t/p/w500/"
     let token = "api_key=5fcd48ff18df9c4be1bbe8d40c555520"
-    let youtubeBaseURL = "https://www.youtube.com/watch?v="
 }
 
 struct APIArrayData<Data: Codable>: Codable {
@@ -33,4 +32,9 @@ struct APIArrayData<Data: Codable>: Codable {
         case totalPages = "total_pages"
         case totalResults = "total_results"
     }
+}
+
+struct APIArrayVideosData<Data: Codable>: Codable {
+    let id: Int
+    let results: [Data]
 }

@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import Lottie
 
 class SearchViewController: UIViewController {
     private var data = SearchModuleResults()
+    private var animationView: LottieAnimationView!
     private var collectionView: UICollectionView?
     private var searchController = UISearchController()
     private var presenter: SearchModulePresenterProtocol!
@@ -20,13 +22,23 @@ class SearchViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        animationView.play()
         presenter.getRecent()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        animationView = CommonUICollorsAndViews.getLottieBackground()
+        view.addSubview(animationView)
         setupView()
+        setupConstraints()
         self.title = "Search"
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        animationView.stop()
+        WebImageManager.shared.removeCache()
     }
 }
 
@@ -41,7 +53,7 @@ private extension SearchViewController {
     func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.itemSize = CGSize(width: (view.bounds.width/3) - 10, height: (view.bounds.height/4))
+        layout.itemSize = CGSize(width: (view.bounds.width/2) - 10, height: (view.bounds.height/5))
         layout.headerReferenceSize = CGSize(width: view.bounds.width, height: 65)
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -75,6 +87,8 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BasicMovieCollectionViewCell.identifier, for: indexPath) as? BasicMovieCollectionViewCell
         guard let cell = cell else { return UICollectionViewCell()}
         cell.nameLabel.text = data[indexPath.row].title
+        cell.genresLabel.text = String(describing: data[indexPath.row].voteAverage)
+        cell.releaseLabel.text = data[indexPath.row].releaseDate
         if let image = data[indexPath.row].posterPath {
             cell.imageView.sd_setImage(with: URL(string: "https://image.tmdb.org/t/p/w500/\(image)"))
         }
@@ -95,6 +109,9 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         presenter.addRecent(index: indexPath.row)
+        let vc = MovieDetailsViewController.module
+        vc.movie = data[indexPath.row].id
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

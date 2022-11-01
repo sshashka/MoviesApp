@@ -7,20 +7,20 @@
 
 import UIKit
 
-class MovieDetailsCollectionViewCell: UICollectionViewCell {
+final class MovieDetailsCollectionViewCell: UICollectionViewCell {
     static let identifier = "MovieDetailsCollectionViewCell"
     
-    let imageView: UIImageView = {
+    private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "aaa")
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.layer.cornerRadius = 8.0
         return imageView
         
     }()
     override init(frame: CGRect) {
         super.init(frame: frame)
         print("Inited \(type(of: self))")
-        addSubview(imageView)
+        contentView.addSubview(imageView)
         setupConstraints()
     }
     
@@ -28,12 +28,17 @@ class MovieDetailsCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setImage(link: String) {
+        let url = URL(string: GlobalVariables.youtubePicURL.rawValue + link + "/0.jpg")
+        imageView.sd_setImage(with: url)
+    }
+        
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor)
+            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
         ])
     }
     

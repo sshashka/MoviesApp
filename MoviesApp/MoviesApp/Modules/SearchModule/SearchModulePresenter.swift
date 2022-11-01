@@ -42,7 +42,6 @@ class SearchModulePresenter: SearchModulePresenterProtocol {
         guard let data = data else { return }
         for i in 0..<data.count {
             if let storedData = data[i].dataFromApi {
-                print(storedData)
                 let result = try? PropertyListDecoder.init().decode(SearchModuleModel.self, from: storedData)
                 guard let result = result else { return }
                 sas.append(result)
