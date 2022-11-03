@@ -22,4 +22,10 @@ struct CommonUICollorsAndViews {
         animationView.play()
         return animationView
     }
+    
+    static func getErrorAlert(title: String?, message: String?) -> UIAlertController {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default))
+        return alert
+    }
 }

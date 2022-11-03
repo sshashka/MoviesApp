@@ -15,12 +15,17 @@ class MovieVideosTableViewCell: UITableViewCell {
     var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        layout.itemSize = .init(width: UIScreen.main.bounds.width - 40, height: 200)
-        return UICollectionView(frame: .zero, collectionViewLayout: layout)
+        layout.itemSize = .init(width: UIScreen.main.bounds.width - 40, height: 240)
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.backgroundColor = .clear
+        collectionView.backgroundView = nil
+        return collectionView
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        backgroundColor = .clear
         print("Inited \(type(of: self))")
         setupCollectionView()
         setupConstraints()
@@ -67,7 +72,7 @@ extension MovieVideosTableViewCell: UICollectionViewDelegate, UICollectionViewDa
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieDetailsCollectionViewCell.identifier, for: indexPath) as? MovieDetailsCollectionViewCell
         guard let cell = cell else { return UICollectionViewCell() }
         if let data = data {
-            cell.setImage(link: data[indexPath.row].key)
+            cell.setImage(data: data[indexPath.row])
         }
         return cell
     }

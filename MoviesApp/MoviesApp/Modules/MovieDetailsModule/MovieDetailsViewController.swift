@@ -17,6 +17,7 @@ final class MovieDetailsViewController: UIViewController {
     var movie = Int()
     private var data = [MovieDetailsModel]()
     private var trailers = VideosData()
+    
     private let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .plain)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -38,6 +39,7 @@ final class MovieDetailsViewController: UIViewController {
         super.viewDidLoad()
         view.addSubview(CommonUICollorsAndViews.getLottieBackground())
         view.addSubview(tableView)
+//        present(CommonUICollorsAndViews.getErrorAlert(title: "title", message: "message"), animated: true)
         setupConstraints()
     }
     
@@ -57,11 +59,15 @@ private extension MovieDetailsViewController {
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
+    }
+    
+    func configureInfoCell(for cell: MovieDeatilsTableViewCell) {
+        
     }
     
     func configureVideosCell(for cell: MovieVideosTableViewCell) {
@@ -83,7 +89,8 @@ extension MovieDetailsViewController: UITableViewDelegate, UITableViewDataSource
         if indexPath.section == MovieDetailsTableViewSection.info.rawValue {
             let cell = tableView.dequeueReusableCell(withIdentifier: MovieDeatilsTableViewCell.identifier, for: indexPath) as? MovieDeatilsTableViewCell
             guard let cell = cell else { return UITableViewCell() }
-            cell.infoLabel.text = data[indexPath.row].title
+            cell.configureCell(for: data[indexPath.row])
+//            cell.titleLabel.text = data[indexPath.row].title
             return cell
         } else if indexPath.section == MovieDetailsTableViewSection.videos.rawValue {
             let cell = tableView.dequeueReusableCell(withIdentifier: MovieVideosTableViewCell.identifier, for: indexPath) as? MovieVideosTableViewCell
@@ -98,7 +105,7 @@ extension MovieDetailsViewController: UITableViewDelegate, UITableViewDataSource
         if indexPath.section == MovieDetailsTableViewSection.info.rawValue {
             return UITableView.automaticDimension
         } else if indexPath.section == MovieDetailsTableViewSection.videos.rawValue {
-            return 210
+            return 240
         }
         return UITableView.automaticDimension
     }
@@ -109,6 +116,7 @@ extension MovieDetailsViewController: MovieDetailsViewProtocol {
     func showDetails(details: MovieDetailsModel) {
         setupTableView(imageURl: details.posterPath)
         self.data.append(details)
+        navigationItem.title = data[0].title
         tableView.reloadData()
     }
     func showTrailers(trailers: VideosData) {

@@ -13,14 +13,30 @@ final class MovieDetailsCollectionViewCell: UICollectionViewCell {
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 8.0
         return imageView
-        
     }()
+    
+    private let nameLabel: UILabel = {
+        let label = UILabel()
+        label.textAlignment = .center
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private lazy var stackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [imageView, nameLabel])
+        stackView.distribution = .fill
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        return stackView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         print("Inited \(type(of: self))")
-        contentView.addSubview(imageView)
+        contentView.addSubview(stackView)
         setupConstraints()
     }
     
@@ -28,17 +44,18 @@ final class MovieDetailsCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setImage(link: String) {
-        let url = URL(string: GlobalVariables.youtubePicURL.rawValue + link + "/0.jpg")
+    func setImage(data: MovieVideosModel) {
+        let url = URL(string: GlobalVariables.youtubePicURL.rawValue + data.key + "/0.jpg")
         imageView.sd_setImage(with: url)
+        nameLabel.text = data.name
     }
         
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
+            stackView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
         ])
     }
     

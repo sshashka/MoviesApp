@@ -13,9 +13,13 @@
 		3032AA4B2901D44A000C762C /* HomeScreenModulePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3032AA4A2901D44A000C762C /* HomeScreenModulePresenter.swift */; };
 		3032AA4E2901EB90000C762C /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3032AA4C2901EB90000C762C /* CoreDataModel.xcdatamodeld */; };
 		3032AA582901F0EC000C762C /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3032AA572901F0EC000C762C /* CoreDataManager.swift */; };
+		305995AF290DD46A00E28608 /* CommonUICollorsAndViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305995AE290DD46A00E28608 /* CommonUICollorsAndViews.swift */; };
+		3077F075290C8844007F99AF /* WebImageConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3077F074290C8844007F99AF /* WebImageConfigurator.swift */; };
 		308570A428F89B140035C300 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308570A328F89B140035C300 /* SearchViewController.swift */; };
 		308570A728F89F390035C300 /* BasicHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308570A628F89F390035C300 /* BasicHeaderCollectionReusableView.swift */; };
 		308570A928F8A2FB0035C300 /* SearchModuleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308570A828F8A2FB0035C300 /* SearchModuleModel.swift */; };
+		308E114F2911DBE2004C7EA4 /* MovieVideosModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308E114E2911DBE2004C7EA4 /* MovieVideosModel.swift */; };
+		3096E87229095B7D00F791FB /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 3096E87129095B7D00F791FB /* Lottie */; };
 		30BA575B28FCAE7F0004CECB /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BA575A28FCAE7F0004CECB /* MovieDetailsViewController.swift */; };
 		30BA575D28FCAF090004CECB /* MovieDeatilsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BA575C28FCAF090004CECB /* MovieDeatilsTableViewCell.swift */; };
 		30BA575F28FCB3990004CECB /* MovieDetailsTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BA575E28FCB3990004CECB /* MovieDetailsTableViewHeader.swift */; };
@@ -69,9 +73,12 @@
 		3032AA4A2901D44A000C762C /* HomeScreenModulePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenModulePresenter.swift; sourceTree = "<group>"; };
 		3032AA4D2901EB90000C762C /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		3032AA572901F0EC000C762C /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		305995AE290DD46A00E28608 /* CommonUICollorsAndViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonUICollorsAndViews.swift; sourceTree = "<group>"; };
+		3077F074290C8844007F99AF /* WebImageConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebImageConfigurator.swift; sourceTree = "<group>"; };
 		308570A328F89B140035C300 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		308570A628F89F390035C300 /* BasicHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		308570A828F8A2FB0035C300 /* SearchModuleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModuleModel.swift; sourceTree = "<group>"; };
+		308E114E2911DBE2004C7EA4 /* MovieVideosModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieVideosModel.swift; sourceTree = "<group>"; };
 		30BA575A28FCAE7F0004CECB /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
 		30BA575C28FCAF090004CECB /* MovieDeatilsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDeatilsTableViewCell.swift; sourceTree = "<group>"; };
 		30BA575E28FCB3990004CECB /* MovieDetailsTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsTableViewHeader.swift; sourceTree = "<group>"; };
@@ -110,6 +117,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30C8C7C02904A64800AA98B4 /* SDWebImage in Frameworks */,
+				3096E87229095B7D00F791FB /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,16 +138,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3077F073290C8272007F99AF /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				30BA575C28FCAF090004CECB /* MovieDeatilsTableViewCell.swift */,
+				30BA575E28FCB3990004CECB /* MovieDetailsTableViewHeader.swift */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
 		308570A128F775070035C300 /* MovieDetailsModule */ = {
 			isa = PBXGroup;
 			children = (
+				3077F073290C8272007F99AF /* TableView */,
 				30BCBEA92906C3B8003468BA /* CollectionView */,
 				30BA575A28FCAE7F0004CECB /* MovieDetailsViewController.swift */,
-				30BA575C28FCAF090004CECB /* MovieDeatilsTableViewCell.swift */,
-				30BA575E28FCB3990004CECB /* MovieDetailsTableViewHeader.swift */,
 				30C8C7B82902B84500AA98B4 /* MovieDetailsService.swift */,
 				30C8C7BA2902BA0A00AA98B4 /* MovieDetailsModel.swift */,
 				30C8C7BC2903231700AA98B4 /* MovieDetailsPresenter.swift */,
+				308E114E2911DBE2004C7EA4 /* MovieVideosModel.swift */,
 			);
 			path = MovieDetailsModule;
 			sourceTree = "<group>";
@@ -181,6 +198,8 @@
 				3018E61B28F750AB008BCAC9 /* BasicMovieCollectionViewCell.swift */,
 				30CE194C28F742E6008D36D5 /* TabBarController.swift */,
 				308570A628F89F390035C300 /* BasicHeaderCollectionReusableView.swift */,
+				3077F074290C8844007F99AF /* WebImageConfigurator.swift */,
+				305995AE290DD46A00E28608 /* CommonUICollorsAndViews.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -188,6 +207,7 @@
 		30C8C7C62905DE2400AA98B4 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				3032AA4C2901EB90000C762C /* CoreDataModel.xcdatamodeld */,
 				30CE194E28F743AA008D36D5 /* API.swift */,
 				3032AA572901F0EC000C762C /* CoreDataManager.swift */,
 			);
@@ -234,7 +254,6 @@
 				30CE192528F7413B008D36D5 /* Assets.xcassets */,
 				30CE192728F7413B008D36D5 /* LaunchScreen.storyboard */,
 				30CE192A28F7413B008D36D5 /* Info.plist */,
-				3032AA4C2901EB90000C762C /* CoreDataModel.xcdatamodeld */,
 			);
 			path = MoviesApp;
 			sourceTree = "<group>";
@@ -297,6 +316,7 @@
 			name = MoviesApp;
 			packageProductDependencies = (
 				30C8C7BF2904A64800AA98B4 /* SDWebImage */,
+				3096E87129095B7D00F791FB /* Lottie */,
 			);
 			productName = MoviesApp;
 			productReference = 30CE191928F7413A008D36D5 /* MoviesApp.app */;
@@ -372,6 +392,7 @@
 			mainGroup = 30CE191028F7413A008D36D5;
 			packageReferences = (
 				30C8C7BE2904A64800AA98B4 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				3096E87029095B7D00F791FB /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 30CE191A28F7413A008D36D5 /* Products */;
 			projectDirPath = "";
@@ -416,8 +437,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				308570A428F89B140035C300 /* SearchViewController.swift in Sources */,
+				308E114F2911DBE2004C7EA4 /* MovieVideosModel.swift in Sources */,
 				30C8C7C92905E62C00AA98B4 /* AutorizationViewController.swift in Sources */,
 				3032AA4B2901D44A000C762C /* HomeScreenModulePresenter.swift in Sources */,
+				305995AF290DD46A00E28608 /* CommonUICollorsAndViews.swift in Sources */,
 				3032AA4E2901EB90000C762C /* CoreDataModel.xcdatamodeld in Sources */,
 				30C8C7BD2903231700AA98B4 /* MovieDetailsPresenter.swift in Sources */,
 				30C8C7C42905D10500AA98B4 /* SearchResults+CoreDataProperties.swift in Sources */,
@@ -434,6 +457,7 @@
 				30C8C7BB2902BA0A00AA98B4 /* MovieDetailsModel.swift in Sources */,
 				3032AA4929018248000C762C /* SearchModulePresenter.swift in Sources */,
 				30E9B70928FDD9F400E579B6 /* SearchTableViewCell.swift in Sources */,
+				3077F075290C8844007F99AF /* WebImageConfigurator.swift in Sources */,
 				30CE194D28F742E6008D36D5 /* TabBarController.swift in Sources */,
 				308570A928F8A2FB0035C300 /* SearchModuleModel.swift in Sources */,
 				3032AA582901F0EC000C762C /* CoreDataManager.swift in Sources */,
@@ -784,6 +808,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		3096E87029095B7D00F791FB /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 		30C8C7BE2904A64800AA98B4 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
@@ -795,6 +827,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		3096E87129095B7D00F791FB /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3096E87029095B7D00F791FB /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
 		30C8C7BF2904A64800AA98B4 /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 30C8C7BE2904A64800AA98B4 /* XCRemoteSwiftPackageReference "SDWebImage" */;
