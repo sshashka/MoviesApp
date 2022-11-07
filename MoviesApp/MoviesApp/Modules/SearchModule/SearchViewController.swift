@@ -8,7 +8,7 @@
 import UIKit
 import Lottie
 
-class SearchViewController: UIViewController {
+final class SearchViewController: UIViewController {
     private var data = SearchModuleResults()
     private var animationView: LottieAnimationView!
     private var collectionView: UICollectionView?

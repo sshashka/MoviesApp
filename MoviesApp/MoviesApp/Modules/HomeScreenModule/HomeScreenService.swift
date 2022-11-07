@@ -15,7 +15,7 @@ protocol HomeScreenServiceProtocol: AnyObject {
     func downloadPictures(link: String, completion: @escaping(SDWebImageDownloadToken) -> Void)
 }
 
-class HomeScreenService: RestService {
+final class HomeScreenService: RestService {
     func linkString(type: HomePageMovieType, page: Int) -> String {
         return baseURL + "/movie/\(type.urlName)?" + token + "&language=en-US&page=\(page)"
     }

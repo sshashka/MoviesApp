@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MovieDetailsTableViewHeader: UIView {
+final class MovieDetailsTableViewHeader: UIView {
     private var image: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFit

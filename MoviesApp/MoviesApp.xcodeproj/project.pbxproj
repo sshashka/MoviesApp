@@ -15,6 +15,7 @@
 		3032AA582901F0EC000C762C /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3032AA572901F0EC000C762C /* CoreDataManager.swift */; };
 		305995AF290DD46A00E28608 /* CommonUICollorsAndViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 305995AE290DD46A00E28608 /* CommonUICollorsAndViews.swift */; };
 		3077F075290C8844007F99AF /* WebImageConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3077F074290C8844007F99AF /* WebImageConfigurator.swift */; };
+		3085072B29185DC80027720D /* DetailsFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3085072A29185DC80027720D /* DetailsFooterView.swift */; };
 		308570A428F89B140035C300 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308570A328F89B140035C300 /* SearchViewController.swift */; };
 		308570A728F89F390035C300 /* BasicHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308570A628F89F390035C300 /* BasicHeaderCollectionReusableView.swift */; };
 		308570A928F8A2FB0035C300 /* SearchModuleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308570A828F8A2FB0035C300 /* SearchModuleModel.swift */; };
@@ -75,6 +76,7 @@
 		3032AA572901F0EC000C762C /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		305995AE290DD46A00E28608 /* CommonUICollorsAndViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonUICollorsAndViews.swift; sourceTree = "<group>"; };
 		3077F074290C8844007F99AF /* WebImageConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebImageConfigurator.swift; sourceTree = "<group>"; };
+		3085072A29185DC80027720D /* DetailsFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsFooterView.swift; sourceTree = "<group>"; };
 		308570A328F89B140035C300 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		308570A628F89F390035C300 /* BasicHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		308570A828F8A2FB0035C300 /* SearchModuleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModuleModel.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				30C8C7BA2902BA0A00AA98B4 /* MovieDetailsModel.swift */,
 				30C8C7BC2903231700AA98B4 /* MovieDetailsPresenter.swift */,
 				308E114E2911DBE2004C7EA4 /* MovieVideosModel.swift */,
+				3085072A29185DC80027720D /* DetailsFooterView.swift */,
 			);
 			path = MovieDetailsModule;
 			sourceTree = "<group>";
@@ -448,6 +451,7 @@
 				30BA575B28FCAE7F0004CECB /* MovieDetailsViewController.swift in Sources */,
 				30C8C7B92902B84500AA98B4 /* MovieDetailsService.swift in Sources */,
 				30CE192128F7413A008D36D5 /* HomeScreenViewController.swift in Sources */,
+				3085072B29185DC80027720D /* DetailsFooterView.swift in Sources */,
 				30E9B70528FD9E2100E579B6 /* MovieDetailsCollectionViewCell.swift in Sources */,
 				3018E61E28F75581008BCAC9 /* HomePageCollectionReusableView.swift in Sources */,
 				308570A728F89F390035C300 /* BasicHeaderCollectionReusableView.swift in Sources */,

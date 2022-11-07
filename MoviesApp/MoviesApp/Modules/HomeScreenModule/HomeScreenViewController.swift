@@ -19,11 +19,11 @@ final class HomeScreenViewController: UIViewController {
     private var collectionView: UICollectionView! = nil
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .clear
         animationView = CommonUICollorsAndViews.getLottieBackground()
         view.addSubview(animationView)
         self.title = "Home"
         setupCollectionView()
-        view.addSubview(collectionView)
         setupConstraints()
         setupNavBar()
     }
@@ -36,6 +36,7 @@ final class HomeScreenViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+//        present(AutorizationViewController(), animated: true)
         animationView.stop()
         WebImageManager.shared.removeCache()
     }
@@ -53,13 +54,15 @@ private extension HomeScreenViewController {
         layuot.footerReferenceSize = CGSize(width: view.bounds.width, height: 66.0)
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layuot)
-        collectionView?.translatesAutoresizingMaskIntoConstraints = false
-        collectionView?.backgroundColor = .clear
-        collectionView?.backgroundView = nil
-        collectionView?.delegate = self
-        collectionView?.dataSource = self
-        collectionView?.register(BasicMovieCollectionViewCell.self, forCellWithReuseIdentifier: BasicMovieCollectionViewCell.identifier)
-        collectionView?.register(HomePageCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: HomePageCollectionReusableView.identifier)
+        guard let collectionView = collectionView else { return }
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.backgroundColor = .clear
+        collectionView.backgroundView = nil
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(BasicMovieCollectionViewCell.self, forCellWithReuseIdentifier: BasicMovieCollectionViewCell.identifier)
+        collectionView.register(HomePageCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: HomePageCollectionReusableView.identifier)
+        view.addSubview(collectionView)
     }
     
     private func setupNavBar() {
@@ -69,6 +72,7 @@ private extension HomeScreenViewController {
     
     @objc private func cinemaTypeDidTap() {
         let alert = UIAlertController(title: "Select cinema type", message: nil, preferredStyle: .actionSheet)
+        alert.view.tintColor = .label
         let actionTopRated = UIAlertAction(title: "Top Rated", style: .default, handler: topRatedActionDidTap)
         let actionNowPlaying = UIAlertAction(title: "Now playing", style: .default, handler: nowPlayingActionDidTap)
         let actionCancel = UIAlertAction(title: "Cancel", style: .cancel)
@@ -131,7 +135,6 @@ extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let vc = MovieDetailsViewController.module
         vc.movie = results[indexPath.row].id
-        print(results[indexPath.row].id)
         navigationController?.pushViewController(vc, animated: true)
     }
 }

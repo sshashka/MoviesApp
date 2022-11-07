@@ -14,7 +14,6 @@ class BasicMovieCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.textColor = .black
         label.textAlignment = .center
         label.lineBreakMode = .byTruncatingTail
         return label
@@ -24,7 +23,6 @@ class BasicMovieCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 2
-        label.textColor = .black
         label.font = UIFont(name: "HelveticaNeue-Thin", size: 16)
         label.textAlignment = .center
         label.lineBreakMode = .byTruncatingTail
@@ -35,7 +33,6 @@ class BasicMovieCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 2
-        label.textColor = .black
         label.font = UIFont(name: "HelveticaNeue-Thin", size: 16)
         label.textAlignment = .center
         label.lineBreakMode = .byTruncatingTail

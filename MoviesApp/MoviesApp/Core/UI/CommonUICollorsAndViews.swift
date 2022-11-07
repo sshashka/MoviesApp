@@ -10,7 +10,7 @@ import Lottie
 
 struct CommonUICollorsAndViews {
     static func getbasicBlurEffect() -> UIVisualEffectView {
-        let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .systemChromeMaterial))
+        let blurView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
         return blurView
     }
     

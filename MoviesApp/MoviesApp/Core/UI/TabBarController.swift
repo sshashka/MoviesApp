@@ -23,6 +23,7 @@ class TabBarController: UITabBarController {
         navVC.title = navTitle
         navVC.tabBarItem.title = title
         navVC.tabBarItem.image = image
+        navVC.navigationBar.tintColor = .label
         navVC.navigationBar.prefersLargeTitles = true
         return navVC
     }

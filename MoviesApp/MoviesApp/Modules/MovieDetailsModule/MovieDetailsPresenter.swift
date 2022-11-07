@@ -17,7 +17,7 @@ protocol MovieDetailsPresenterProtocol: AnyObject {
     func getTrailers(for movie: Int)
 }
 
-class MovieDetailsPresenter: MovieDetailsPresenterProtocol {
+final class MovieDetailsPresenter: MovieDetailsPresenterProtocol {
     
     let service: MovieDetailsServiceProtocol!
     weak var view: MovieDetailsViewProtocol?

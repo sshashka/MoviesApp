@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomePageCollectionReusableView: UICollectionReusableView {
+final class HomePageCollectionReusableView: UICollectionReusableView {
     static let identifier = "HomePageCollectionReusableView"
     
     let button: UIButton = {

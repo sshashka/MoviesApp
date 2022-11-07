@@ -109,6 +109,14 @@ extension MovieDetailsViewController: UITableViewDelegate, UITableViewDataSource
         }
         return UITableView.automaticDimension
     }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == MovieDetailsTableViewSection.info.rawValue {
+            return nil
+        } else {
+            return "Videos and trailers"
+        }
+    }
 }
 
 extension MovieDetailsViewController: MovieDetailsViewProtocol {

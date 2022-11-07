@@ -8,7 +8,7 @@
 import UIKit
 
 
-class MovieVideosTableViewCell: UITableViewCell {
+final class MovieVideosTableViewCell: UITableViewCell {
     static let identifier = "MovieVideosTableViewCell"
     var data: VideosData?
     

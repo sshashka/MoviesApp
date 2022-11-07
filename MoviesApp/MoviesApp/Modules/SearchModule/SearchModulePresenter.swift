@@ -17,7 +17,7 @@ protocol SearchModulePresenterProtocol: AnyObject {
     func addRecent(index: Int)
 }
 
-class SearchModulePresenter: SearchModulePresenterProtocol {
+final class SearchModulePresenter: SearchModulePresenterProtocol {
     
     let service: SearchModuleServiceProtocol!
     let coreDataManager: CoreDataManagerProtocol!

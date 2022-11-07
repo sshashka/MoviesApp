@@ -17,7 +17,7 @@ protocol HomeScreenModulePresenterProtocol: AnyObject {
     func getData()
 }
 
-class HomeScreenModulePresenter: HomeScreenModulePresenterProtocol {
+final class HomeScreenModulePresenter: HomeScreenModulePresenterProtocol {
     var movieType: HomePageMovieType
     private var page: Int = 1
     let service: HomeScreenServiceProtocol!

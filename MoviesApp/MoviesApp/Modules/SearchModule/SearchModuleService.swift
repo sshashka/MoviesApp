@@ -12,7 +12,7 @@ protocol SearchModuleServiceProtocol: AnyObject {
 }
 
 
-class SearchModuleService: RestService {
+final class SearchModuleService: RestService {
     func getLink(for text: String, page: Int) -> String {
         return baseURL + "/search/movie?" + token + "&language=en-US&query=" + text.addingPercentEncoding(
             withAllowedCharacters: CharacterSet.urlQueryAllowed)! + "&page=\(page)&include_adult=true"

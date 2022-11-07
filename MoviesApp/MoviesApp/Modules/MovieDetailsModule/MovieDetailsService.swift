@@ -12,7 +12,7 @@ protocol MovieDetailsServiceProtocol: AnyObject {
     func getTrailers(for movie: Int, completion: @escaping(VideosData) -> Void)
 }
 
-class MovieDetailsService: RestService {
+final class MovieDetailsService: RestService {
     func getLink(for movie: Int) -> String {
         return baseURL + "/movie/\(movie)?" + token + "&language=en-US"
     }
