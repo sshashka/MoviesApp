@@ -53,7 +53,7 @@ private extension SearchViewController {
     func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.itemSize = CGSize(width: (view.bounds.width/2) - 10, height: (view.bounds.height/5))
+        layout.itemSize = CGSize(width: (view.bounds.width/2) - 10, height: (view.bounds.height/5) - 30)
         layout.headerReferenceSize = CGSize(width: view.bounds.width, height: 65)
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)

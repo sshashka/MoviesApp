@@ -50,7 +50,7 @@ private extension HomeScreenViewController {
     func setupCollectionView() {
         let layuot = UICollectionViewFlowLayout()
         layuot.scrollDirection = .vertical
-        layuot.itemSize = CGSize(width: (view.bounds.width/2) - 10, height: (view.bounds.height/5))
+        layuot.itemSize = CGSize(width: (view.bounds.width/2) - 10, height: (view.bounds.height/5) - 30)
         layuot.footerReferenceSize = CGSize(width: view.bounds.width, height: 66.0)
         
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layuot)
@@ -116,7 +116,7 @@ extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDa
         cell.nameLabel.text = results[indexPath.row].title
         cell.imageView.sd_setImage(with: URL(string: "https://image.tmdb.org/t/p/w500/\( results[indexPath.row].posterPath)"))
         cell.releaseLabel.text = results[indexPath.row].releaseDate
-        cell.genresLabel.text = String(describing: results[indexPath.row].genreIDS)
+        cell.genresLabel.text = String(results[indexPath.row].voteAverage)
         return cell
     }
     
