@@ -18,8 +18,8 @@ https://developers.themoviedb.org/3/getting-started/introduction
 - Delegate pattern usage
 ## Coming Soon
 - Autorization (via api provided tools, or hopefuly FireBase)
-- Animations, because who does not like them(espectially when you hide poor api responce time with them)
+- ~~Animations, because who does not like them(espectially when you hide poor api responce time with them)~~
 - UI improvenets
 - Code improvements. Because I believe in perfection, and it's a very long journey to acheive it
-- Feature to watch movie trailers in app, using YouTube API
+- ~~Feature to watch movie trailers in app, using redirect to YouTube, because YouTube doesn't like to share something outside their platform~~
 
