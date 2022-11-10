@@ -65,36 +65,78 @@ private extension HomeScreenViewController {
         view.addSubview(collectionView)
     }
     
-    private func setupNavBar() {
-        let typeButton = UIBarButtonItem(image: UIImage(systemName: "arrow.up.arrow.down")!, style: .plain, target: self, action: #selector(cinemaTypeDidTap))
-        navigationItem.rightBarButtonItem = typeButton
+    func animateChanges() {
+        UIView.animate(withDuration: 1.0, delay: 0, options: [.curveEaseIn], animations: {
+            //dont need [weak self] here becuse it
+            self.collectionView.reloadSections(IndexSet(integersIn: 0...0))
+        }, completion: nil)
     }
     
-    @objc private func cinemaTypeDidTap() {
+    func setupNavBar() {
+        let typeButton = UIBarButtonItem(image: UIImage(systemName: "arrow.up.arrow.down")!, style: .plain, target: self, action: #selector(cinemaTypeDidTap))
+        
+        let sortButton = UIBarButtonItem(image: UIImage(systemName: "list.dash")!, style: .plain, target: self, action: #selector(sortButtonDidTap))
+        
+        navigationItem.rightBarButtonItems = [typeButton, sortButton]
+    }
+    //MARK: Actiongs for sorting
+    @objc func sortButtonDidTap() {
+        let alert = UIAlertController(title: "Sorting types", message: nil, preferredStyle: .actionSheet)
+        alert.view.tintColor = .label
+        alert.addAction(UIAlertAction(title: "By release date", style: .default, handler: byReleaseDateDidTap))
+        alert.addAction(UIAlertAction(title: "By popularity", style: .default, handler: byPopularityDidTap))
+        alert.addAction(UIAlertAction(title: "By rating", style: .default, handler: byRatingDidTap))
+        alert.addAction(UIAlertAction(title: "Default", style: .default, handler: byDefaultDidTap))
+        alert.addAction(UIAlertAction(title: "Cancell", style: .cancel))
+        
+        present(alert, animated: true)
+    }
+    //MARK: Actiongs for cinema types
+    @objc func cinemaTypeDidTap() {
         let alert = UIAlertController(title: "Select cinema type", message: nil, preferredStyle: .actionSheet)
         alert.view.tintColor = .label
         let actionTopRated = UIAlertAction(title: "Top Rated", style: .default, handler: topRatedActionDidTap)
         let actionNowPlaying = UIAlertAction(title: "Now playing", style: .default, handler: nowPlayingActionDidTap)
         let actionCancel = UIAlertAction(title: "Cancel", style: .cancel)
+        
         alert.addAction(actionTopRated)
         alert.addAction(actionNowPlaying)
         alert.addAction(actionCancel)
+        
         present(alert, animated: true)
     }
     
-    private func topRatedActionDidTap(_ action: UIAlertAction) {
+    //MARK: Handlers for cinema types
+    func topRatedActionDidTap(_ action: UIAlertAction) {
         presenter?.movieTypeChanged(movieType: .topRated)
     }
     
-    private func nowPlayingActionDidTap(_ action: UIAlertAction) {
+    func nowPlayingActionDidTap(_ action: UIAlertAction) {
         presenter?.movieTypeChanged(movieType: .nowPlaying)
     }
+    //MARK: Handlers for sorting
     
-    @objc private func loadMoreButtonDidTap() {
+    func byReleaseDateDidTap(_ action: UIAlertAction) {
+        presenter?.sortMovies(type: .byReleaseDate)
+    }
+    
+    func byDefaultDidTap(_ action: UIAlertAction) {
+        presenter?.sortMovies(type: .standart)
+    }
+    
+    func byPopularityDidTap(_ action: UIAlertAction) {
+        presenter?.sortMovies(type: .byPopularity)
+    }
+    
+    func byRatingDidTap(_ action: UIAlertAction) {
+        presenter?.sortMovies(type: .byRating)
+    }
+    
+    @objc func loadMoreButtonDidTap() {
         presenter?.loadMoreFunctionDidTap()
     }
     
-    private func setupConstraints() {
+    func setupConstraints() {
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 5),
@@ -140,9 +182,14 @@ extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDa
 }
 
 extension HomeScreenViewController: HomeScreenModuleViewProtocol {
+    func movieFilterDidChange(results: HomePageResults) {
+        self.results = results
+        animateChanges()
+    }
+    
     func movieTypeDidChange(results: HomePageResults) {
         self.results = results
-        collectionView.reloadData()
+        animateChanges()
     }
     
     func showResults(results: HomePageResults) {
@@ -160,5 +207,3 @@ extension HomeScreenViewController {
         return vc
     }
 }
-
-

@@ -12,7 +12,7 @@ final class SearchViewController: UIViewController {
     private var data = SearchModuleResults()
     private var animationView: LottieAnimationView!
     private var collectionView: UICollectionView?
-    private var searchController = UISearchController()
+    private var searchController = UISearchController(searchResultsController: nil)
     private var presenter: SearchModulePresenterProtocol!
     private var searchControllerIsActive: Bool? {
         didSet {
@@ -32,7 +32,7 @@ final class SearchViewController: UIViewController {
         view.addSubview(animationView)
         setupView()
         setupConstraints()
-        self.title = "Search"
+        self.title = "Searched recently"
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -47,6 +47,7 @@ private extension SearchViewController {
     func setupView() {
         navigationItem.searchController = searchController
         searchController.searchResultsUpdater = self
+
         setupCollectionView()
     }
     
@@ -71,9 +72,9 @@ private extension SearchViewController {
     func setupConstraints() {
         guard let collectionView = collectionView else { return }
         NSLayoutConstraint.activate([
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
+            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5)
         ])
     }
@@ -83,6 +84,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return data.count
     }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BasicMovieCollectionViewCell.identifier, for: indexPath) as? BasicMovieCollectionViewCell
         guard let cell = cell else { return UICollectionViewCell()}
