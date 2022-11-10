@@ -16,7 +16,9 @@ final class SearchViewController: UIViewController {
     private var presenter: SearchModulePresenterProtocol!
     private var searchControllerIsActive: Bool? {
         didSet {
-            searchControllerDidBecomeActive()
+            if oldValue != searchControllerIsActive {
+                searchControllerDidBecomeActive()
+            }
         }
     }
     
@@ -43,11 +45,9 @@ final class SearchViewController: UIViewController {
 }
 
 private extension SearchViewController {
-    
     func setupView() {
         navigationItem.searchController = searchController
         searchController.searchResultsUpdater = self
-
         setupCollectionView()
     }
     
@@ -69,6 +69,7 @@ private extension SearchViewController {
         setupConstraints()
         
     }
+    
     func setupConstraints() {
         guard let collectionView = collectionView else { return }
         NSLayoutConstraint.activate([
@@ -118,7 +119,6 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
 }
 
 extension SearchViewController: UISearchResultsUpdating {
-    
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text else { return }
         
